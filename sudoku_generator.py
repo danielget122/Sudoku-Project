@@ -126,7 +126,7 @@ class SudokuGenerator:
             return False
         elif not self.valid_in_col(col,num):
             return False
-        row_start=3*(row//3) #to isolate a given box
+        row_start=3*(row//3) #to isolate a given box since each box of the diagonal starts at (0,0), (3,3) and (6,6)
         col_start=3*(col//3)
 
         if not self.valid_in_box(row_start,col_start, num):
@@ -160,7 +160,9 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_diagonal(self):
-        pass
+        self.fill_box(0,0)
+        self.fill_box(3,3)
+        self.fill_box(6,6)
 
     '''
     DO NOT CHANGE
@@ -226,7 +228,18 @@ class SudokuGenerator:
 	Return: None
     '''
     def remove_cells(self):
-        pass
+        set_of_cells= set() #set means no duplicate and no duplicate a cell is not going to be removed multiple times
+
+        while len(set_of_cells)!=self.removed_cells:
+
+            row=random.randrange(0,9) #random number of row and column
+            col=random.randrange(0,9)
+
+            removed_cell=(row,col)
+            if removed_cell not in set_of_cells:
+                set_of_cells.add(removed_cell)
+                self.board[row][col] = 0
+
 
 '''
 DO NOT CHANGE
@@ -251,5 +264,5 @@ def generate_sudoku(size, removed):
     board = sudoku.get_board()
     return board
 
-b1=SudokuGenerator(9,4)
-b1.print_board()
+# b1=SudokuGenerator(9,4)
+# b1.print_board()
