@@ -1,6 +1,4 @@
 import pygame
-
-
 from constants import *
 from Cell import *
 pygame.init()
@@ -126,7 +124,27 @@ class Board:
                     return(i,j)
         return False
     def check_board(self):
-        pass
+
+        for row in self.board: #checking row
+
+            if set(row)!={1,2,3,4,5,6,7,8,9}:
+              return False
+
+        my_set=set()
+        for row in range(len(self.board)): #checking cols
+            for col in range(len(self.board)):
+                my_set.add(self.board[row][col])
+            if my_set != {1,2,3,4,5,6,7,8,9}:
+                return False
+            return True
+
+
+
+
+
+
+
+
 
 # board = Board(WIDTH,HEIGHT,screen,difficulty=0)
 # #board.select()
