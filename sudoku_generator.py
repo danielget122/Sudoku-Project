@@ -281,5 +281,5 @@ removed is the number of cells to clear (set to 0)
 Return: list[list] (a 2D Python list to represent the board)
 '''
 
-# b1=SudokuGenerator(9,4+1)
+# b1=SudokuGenerator(9,4+2)
 # b1.print_board()
